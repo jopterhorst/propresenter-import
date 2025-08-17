@@ -2,155 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>ProPresenter import</title>
+  <title>ProPresenter Import Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Day.js for timestamp -->
   <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-  <style>
-    :root {
-      --bg: #f0f0f0;
-      --card: #ffffff;
-      --border: #dddddd;
-      --text: #222222;
-      --accent: steelblue;
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    main {
-      padding: 3rem 1.5rem;
-      display: grid;
-      place-items: start center;
-    }
-    .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: .75rem 1rem;
-      width: min(100%, 60rem);
-    }
-    .container h1 {
-      grid-column: 1 / -1;
-      margin: 0 0 .25rem 0;
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-    .sub {
-      grid-column: 1 / -1;
-      margin: 0 0 .5rem 0;
-      color: #555;
-    }
-    input[type="text"] {
-      border-radius: .25rem;
-      border: 1px solid #ccc;
-      padding: .5rem .75rem;
-      width: 100%;
-      background: #fff;
-    }
-    .row {
-      grid-column: 1 / -1;
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      flex-wrap: wrap;
-    }
-    textarea {
-      border-radius: .25rem;
-      border: 1px solid #ccc;
-      padding: 1rem;
-      grid-column: 1 / -1;
-      min-height: 18rem;
-      resize: vertical;
-      background: #fff;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    }
-    label {
-      font-size: .95rem;
-      user-select: none;
-    }
-    button {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: .25rem;
-      padding: .6rem 1rem;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    button:disabled { opacity: .6; cursor: not-allowed; }
-
-    .panel {
-      grid-column: 1 / -1;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: .4rem;
-      padding: 1rem;
-    }
-    .panel h3 {
-      margin: 0 0 .5rem 0;
-      font-size: 1rem;
-    }
-    #diagnostics {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      white-space: pre-wrap;
-      max-height: 18rem;
-      overflow: auto;
-      border: 1px dashed #e2e2e2;
-      padding: .75rem;
-      background: #fafafa;
-    }
-    .footer-note {
-      grid-column: 1 / -1;
-      color: #666;
-      font-size: .9rem;
-    }
-  </style>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<main>
   <div class="container">
-    <h1>ProPresenter .pro6 generator</h1>
-    <p class="sub">
-      Creates .pro6 files with bilingual support: <strong>English goes to slide notes</strong>, <strong>Dutch to slide text</strong>. 
-      This works with ProPresenter themes that have both "Slide Text" and "Slide Notes" text boxes.
-    </p>
-    <p class="sub">
-      Paste your (EN/NL) lyrics below. Each slide contains: English (in notes) + Dutch (in text). Check "No translations" to use only 1 line per slide.
-    </p>
+    <div class="header">
+      <h1>ProPresenter .pro6 Generator</h1>
+      <p class="subtitle">Create bilingual ProPresenter files with slide text and slide notes support</p>
+    </div>
 
-    <input type="text" placeholder="Artist" id="artiest" />
-    <input type="text" placeholder="Title" id="titel" />
+    <div class="info-section">
+      <h3>How It Works</h3>
+      <p><strong>First language</strong> (English) → Goes to slide <strong>notes</strong></p>
+      <p><strong>Second language</strong> (Dutch, Spanish, etc.) → Goes to slide <strong>text</strong></p>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h4>Bilingual Support</h4>
+          <p>Works with any language pair for international worship</p>
+        </div>
+        <div class="feature-item">
+          <h4>ProPresenter Ready</h4>
+          <p>Generates valid .pro6 files with proper RTF formatting</p>
+        </div>
+        <div class="feature-item">
+          <h4>Smart Processing</h4>
+          <p>Automatically normalizes quotes, dashes, and special characters</p>
+        </div>
+      </div>
+    </div>
 
-    <textarea id="input" placeholder="Paste your lyrics here, e.g.:
+    <div class="main-content">
+      <div class="card">
+        <h2>Song Details</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="artiest">Artist</label>
+            <input type="text" placeholder="Artist name" id="artiest" />
+          </div>
+          <div class="form-group">
+            <label for="titel">Title</label>
+            <input type="text" placeholder="Song title" id="titel" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="input">Lyrics</label>
+          <textarea id="input" placeholder="Paste your lyrics here, e.g.:
 Line 1 English
 Regel 1 Nederlands
 
 Line 2 English
-Regel 2 Nederlands
-"></textarea>
+Regel 2 Nederlands"></textarea>
+        </div>
 
-    <div class="row">
-      <label><input type="checkbox" id="noTranslation" /> No translations</label>
-      <button type="button" id="exportBtn">Convert Now</button>
+        <div class="checkbox-group">
+          <input type="checkbox" id="noTranslation" />
+          <label for="noTranslation">No translations (single language mode)</label>
+        </div>
+
+        <button type="button" class="convert-btn" id="exportBtn">Convert Now</button>
+      </div>
+
+      <div class="card">
+        <h2>Diagnostics</h2>
+        <div class="diagnostics" id="diagnostics">No analysis yet...</div>
+      </div>
     </div>
 
-    <div class="panel">
-      <h3>Diagnostics</h3>
-      <div id="diagnostics">No analysis yet...</div>
+    <div class="info-section">
+      <h3>ProPresenter Setup Required</h3>
+      <p><strong>1.</strong> Create a theme with both "Slide Text" and "Slide Notes" text elements</p>
+      <p><strong>2.</strong> Position and style each element (different fonts, sizes, colors)</p>
+      <p><strong>3.</strong> Import the generated .pro6 file - it will use your theme automatically</p>
+      <p><strong>Note:</strong> Special characters are normalized, XML is safely escaped, and UTF-8 encoding preserves international characters.</p>
     </div>
-
-    <p class="footer-note">
-      <strong>ProPresenter setup:</strong> Create a theme with both "Slide Text" (Dutch) and "Slide Notes" (English) text boxes for bilingual display.<br>
-      <strong>Tips:</strong> Special characters are automatically normalized (smart quotes, en-dash, NBSP), XML attributes are safely escaped, and export uses UTF-8 Base64.
-    </p>
   </div>
-</main>
 
-<script type="module" src="js/main.js"></script>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>Found an issue or have a suggestion?</p>
+      <a href="https://github.com/jopterhorst/propresenter-import/issues" class="github-link" target="_blank" rel="noopener noreferrer">
+        <svg class="github-icon" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        Report Issues on GitHub
+      </a>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
