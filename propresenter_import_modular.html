@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <title>ProPresenter import</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Day.js for timestamp -->
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <style>
+    :root {
+      --bg: #f0f0f0;
+      --card: #ffffff;
+      --border: #dddddd;
+      --text: #222222;
+      --accent: steelblue;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    main {
+      padding: 3rem 1.5rem;
+      display: grid;
+      place-items: start center;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem 1rem;
+      width: min(100%, 60rem);
+    }
+    .container h1 {
+      grid-column: 1 / -1;
+      margin: 0 0 .25rem 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .sub {
+      grid-column: 1 / -1;
+      margin: 0 0 .5rem 0;
+      color: #555;
+    }
+    input[type="text"] {
+      border-radius: .25rem;
+      border: 1px solid #ccc;
+      padding: .5rem .75rem;
+      width: 100%;
+      background: #fff;
+    }
+    .row {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+    textarea {
+      border-radius: .25rem;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      grid-column: 1 / -1;
+      min-height: 18rem;
+      resize: vertical;
+      background: #fff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+    label {
+      font-size: .95rem;
+      user-select: none;
+    }
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: .25rem;
+      padding: .6rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:disabled { opacity: .6; cursor: not-allowed; }
+
+    .panel {
+      grid-column: 1 / -1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: .4rem;
+      padding: 1rem;
+    }
+    .panel h3 {
+      margin: 0 0 .5rem 0;
+      font-size: 1rem;
+    }
+    #diagnostics {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      white-space: pre-wrap;
+      max-height: 18rem;
+      overflow: auto;
+      border: 1px dashed #e2e2e2;
+      padding: .75rem;
+      background: #fafafa;
+    }
+    .footer-note {
+      grid-column: 1 / -1;
+      color: #666;
+      font-size: .9rem;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="container">
+    <h1>ProPresenter .pro6 generator</h1>
+    <p class="sub">Plak hieronder je (EN/NL) teksten. Elke slide bevat: Engels (groot) + Nederlands (cursief). Vink "Geen vertalingen" aan om alleen 1 regel per slide te gebruiken.</p>
+
+    <input type="text" placeholder="Artiest" id="artiest" />
+    <input type="text" placeholder="Titel" id="titel" />
+
+    <textarea id="input" placeholder="Plak hier je tekst, bijv.:
+Line 1 English
+Regel 1 Nederlands
+
+Line 2 English
+Regel 2 Nederlands
+"></textarea>
+
+    <div class="row">
+      <label><input type="checkbox" id="noTranslation" /> Geen vertalingen</label>
+      <button type="button" id="exportBtn">Omzetten maar</button>
+    </div>
+
+    <div class="panel">
+      <h3>Diagnostics</h3>
+      <div id="diagnostics">Nog geen analyse...</div>
+    </div>
+
+    <p class="footer-note">
+      Tips: bijzondere tekens worden automatisch genormaliseerd (slimme aanhalingstekens, en-dash, NBSP), XML-attributen worden veilig ge-escaped, en export gebruikt UTF-8 Base64.
+    </p>
+  </div>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
