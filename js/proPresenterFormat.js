@@ -51,8 +51,10 @@ export class ProPresenterFormat {
    */
   static createRTFContent(englishText, dutchText = '') {
     if (dutchText) {
-      return this.RTF_BEFORE + englishText + this.RTF_BETWEEN + dutchText + this.RTF_AFTER;
+      // Only Dutch text goes in the slide text box (using primary font style)
+      return this.RTF_BEFORE + dutchText + this.RTF_BETWEEN + this.RTF_AFTER;
     } else {
+      // If no Dutch text, use English text in the slide text box
       return this.RTF_BEFORE + englishText + this.RTF_BETWEEN + this.RTF_AFTER;
     }
   }
