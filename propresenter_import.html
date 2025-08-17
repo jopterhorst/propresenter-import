@@ -115,7 +115,13 @@
 <main>
   <div class="container">
     <h1>ProPresenter .pro6 generator</h1>
-    <p class="sub">Plak hieronder je (EN/NL) teksten. Elke slide bevat: Engels (groot) + Nederlands (cursief). Vink "Geen vertalingen" aan om alleen 1 regel per slide te gebruiken.</p>
+    <p class="sub">
+      Creëert .pro6 bestanden met tweetalige ondersteuning: <strong>Engels gaat naar slide notes</strong>, <strong>Nederlands naar slide tekst</strong>. 
+      Dit werkt met ProPresenter themes die zowel een "Slide Text" als "Slide Notes" tekstvak hebben.
+    </p>
+    <p class="sub">
+      Plak hieronder je (EN/NL) teksten. Elke slide bevat: Engels (in notes) + Nederlands (in tekst). Vink "Geen vertalingen" aan om alleen 1 regel per slide te gebruiken.
+    </p>
 
     <input type="text" placeholder="Artiest" id="artiest" />
     <input type="text" placeholder="Titel" id="titel" />
@@ -139,7 +145,8 @@ Regel 2 Nederlands
     </div>
 
     <p class="footer-note">
-      Tips: bijzondere tekens worden automatisch genormaliseerd (slimme aanhalingstekens, en-dash, NBSP), XML-attributen worden veilig ge-escaped, en export gebruikt UTF-8 Base64.
+      <strong>ProPresenter setup:</strong> Maak een theme met zowel "Slide Text" (Nederlands) als "Slide Notes" (Engels) tekstvakken voor tweetalige weergave.<br>
+      <strong>Tips:</strong> bijzondere tekens worden automatisch genormaliseerd (slimme aanhalingstekens, en-dash, NBSP), XML-attributen worden veilig ge-escaped, en export gebruikt UTF-8 Base64.
     </p>
   </div>
 </main>
