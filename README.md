@@ -29,11 +29,7 @@ To use the generated .pro6 files effectively:
 
 ## Files Structure
 
-### Main Application
 - `index.html` - Main HTML file with modular JavaScript architecture
-
-### Legacy Version
-- `propresenter_import.html` - Original single-file version with all code embedded
 - `js/` - JavaScript modules folder
   - `main.js` - Application entry point
   - `textProcessing.js` - Text normalization and utility functions
@@ -55,7 +51,7 @@ To use the generated .pro6 files effectively:
 ## Usage
 
 ### Step 1: Prepare Your Lyrics
-1. Open `index.html` in a web browser (or the legacy `propresenter_import.html`)
+1. Open `index.html` in a web browser
 2. Enter artist and title information
 3. Paste lyrics in the text area in alternating format:
    ```
