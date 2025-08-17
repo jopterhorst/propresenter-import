@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>ProPresenter import</title>
@@ -116,17 +116,17 @@
   <div class="container">
     <h1>ProPresenter .pro6 generator</h1>
     <p class="sub">
-      Creëert .pro6 bestanden met tweetalige ondersteuning: <strong>Engels gaat naar slide notes</strong>, <strong>Nederlands naar slide tekst</strong>. 
-      Dit werkt met ProPresenter themes die zowel een "Slide Text" als "Slide Notes" tekstvak hebben.
+      Creates .pro6 files with bilingual support: <strong>English goes to slide notes</strong>, <strong>Dutch to slide text</strong>. 
+      This works with ProPresenter themes that have both "Slide Text" and "Slide Notes" text boxes.
     </p>
     <p class="sub">
-      Plak hieronder je (EN/NL) teksten. Elke slide bevat: Engels (in notes) + Nederlands (in tekst). Vink "Geen vertalingen" aan om alleen 1 regel per slide te gebruiken.
+      Paste your (EN/NL) lyrics below. Each slide contains: English (in notes) + Dutch (in text). Check "No translations" to use only 1 line per slide.
     </p>
 
-    <input type="text" placeholder="Artiest" id="artiest" />
-    <input type="text" placeholder="Titel" id="titel" />
+    <input type="text" placeholder="Artist" id="artiest" />
+    <input type="text" placeholder="Title" id="titel" />
 
-    <textarea id="input" placeholder="Plak hier je tekst, bijv.:
+    <textarea id="input" placeholder="Paste your lyrics here, e.g.:
 Line 1 English
 Regel 1 Nederlands
 
@@ -135,18 +135,18 @@ Regel 2 Nederlands
 "></textarea>
 
     <div class="row">
-      <label><input type="checkbox" id="noTranslation" /> Geen vertalingen</label>
-      <button type="button" id="exportBtn">Omzetten maar</button>
+      <label><input type="checkbox" id="noTranslation" /> No translations</label>
+      <button type="button" id="exportBtn">Convert Now</button>
     </div>
 
     <div class="panel">
       <h3>Diagnostics</h3>
-      <div id="diagnostics">Nog geen analyse...</div>
+      <div id="diagnostics">No analysis yet...</div>
     </div>
 
     <p class="footer-note">
-      <strong>ProPresenter setup:</strong> Maak een theme met zowel "Slide Text" (Nederlands) als "Slide Notes" (Engels) tekstvakken voor tweetalige weergave.<br>
-      <strong>Tips:</strong> bijzondere tekens worden automatisch genormaliseerd (slimme aanhalingstekens, en-dash, NBSP), XML-attributen worden veilig ge-escaped, en export gebruikt UTF-8 Base64.
+      <strong>ProPresenter setup:</strong> Create a theme with both "Slide Text" (Dutch) and "Slide Notes" (English) text boxes for bilingual display.<br>
+      <strong>Tips:</strong> Special characters are automatically normalized (smart quotes, en-dash, NBSP), XML attributes are safely escaped, and export uses UTF-8 Base64.
     </p>
   </div>
 </main>

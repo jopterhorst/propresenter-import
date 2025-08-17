@@ -99,7 +99,7 @@ export class UI {
       
     } catch (error) {
       console.error('Export failed:', error);
-      alert('Er is een fout opgetreden tijdens het exporteren. Controleer de console voor details.');
+      alert('An error occurred during export. Check the console for details.');
     }
   }
 

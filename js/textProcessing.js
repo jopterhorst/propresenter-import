@@ -65,7 +65,7 @@ export class TextProcessor {
     const normalizedTitle = this.normalize(title.trim());
     
     if (!normalizedTitle && !normalizedArtist) {
-      return 'liedje.pro6';
+      return 'song.pro6';
     }
     
     return [normalizedArtist, normalizedTitle]
