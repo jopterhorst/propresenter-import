@@ -1,27 +1,29 @@
 # ProPresenter Import Tool
 
-A web-based tool for converting bilingual song lyrics (English/Dutch) into ProPresenter .pro6 format with dual-language support.
+A web-based tool for converting bilingual song lyrics into ProPresenter .pro6 format with dual-language support.
 
 ## How It Works
 
 This tool creates ProPresenter files that leverage **slide text** and **slide notes** for bilingual displays:
 
-- **English text** → Goes into slide **notes** (accessible via slide notes text box)
-- **Dutch text** → Goes into slide **text** (main slide content)
+- **First language** (e.g., English) → Goes into slide **notes** (accessible via slide notes text box)
+- **Second language** (e.g., Dutch, Spanish, French, etc.) → Goes into slide **text** (main slide content)
 
 This allows you to create ProPresenter themes with both:
-1. **Main slide text box** displaying Dutch lyrics
-2. **Slide notes text box** displaying English lyrics
+1. **Main slide text box** displaying the second language lyrics
+2. **Slide notes text box** displaying the first language lyrics
 
 Both languages can be shown simultaneously with different formatting, positioning, and styling.
+
+**Note**: While the examples use English/Dutch, this tool works with **any language pair**. The first language goes to slide notes, the second to slide text.
 
 ## ProPresenter Setup Required
 
 To use the generated .pro6 files effectively:
 
 1. **Create a custom theme** in ProPresenter with two text elements:
-   - Main text element for slide content (Dutch)
-   - Notes text element for slide notes (English)
+   - Main text element for slide content (second language)
+   - Notes text element for slide notes (first language)
 2. **Position and style** each text element as desired (different fonts, sizes, colors, positions)
 3. **Import the .pro6 file** - it will use your dual-language theme automatically
 
@@ -41,7 +43,8 @@ To use the generated .pro6 files effectively:
 
 ## Features
 
-- **Dual-Language Support**: English in slide notes, Dutch in slide text
+- **Dual-Language Support**: First language in slide notes, second language in slide text
+- **Universal Language Support**: Works with any language pair (English/Dutch, English/Spanish, etc.)
 - **ProPresenter Integration**: Works with slide text + slide notes text boxes
 - **Smart Text Processing**: Automatically normalizes curly quotes, dashes, and NBSP
 - **Real-time Diagnostics**: Shows potential text issues before export
@@ -56,20 +59,20 @@ To use the generated .pro6 files effectively:
 2. Enter artist and title information
 3. Paste lyrics in the text area in alternating format:
    ```
-   English line 1
-   Dutch line 1
+   First language line 1 (e.g., English)
+   Second language line 1 (e.g., Dutch)
    
-   English line 2
-   Dutch line 2
+   First language line 2
+   Second language line 2
    ```
-4. Check "Geen vertalingen" for single-language mode
-5. Click "Omzetten maar" to generate and download the .pro6 file
+4. Check "No translations" for single-language mode
+5. Click "Convert Now" to generate and download the .pro6 file
 
 ### Step 2: Setup ProPresenter Theme
 1. **Create a new theme** in ProPresenter
 2. **Add two text elements**:
-   - **Slide Text Element**: Will display Dutch lyrics (main slide content)
-   - **Slide Notes Element**: Will display English lyrics (from slide notes)
+   - **Slide Text Element**: Will display second language lyrics (main slide content)
+   - **Slide Notes Element**: Will display first language lyrics (from slide notes)
 3. **Position and style** each element:
    - Different fonts, sizes, colors
    - Different screen positions
@@ -105,7 +108,9 @@ Requires modern browser support for:
 
 ## Tips
 
+- **Language Flexibility**: Works with any language pair - English/Spanish, French/German, etc.
 - Use the diagnostics panel to check for text formatting issues
 - Non-ASCII characters are preserved safely via UTF-8 encoding
 - Empty lines are automatically filtered out
 - File names are generated from artist/title fields
+- The tool alternates lines: odd lines → slide notes, even lines → slide text
